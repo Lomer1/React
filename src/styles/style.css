@@ -13,6 +13,11 @@
     width: 800px;
 }
 
+.title {
+    text-align: center;
+    margin-top: 15px;
+}
+
 .post {
     display: flex;
     padding: 15px;
