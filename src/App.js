@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <PostList posts = {posts} title = "Список постов 1"/>
-      <PostList posts = {posts2} title = "Room 61"/>
+      <PostList posts = {posts2} title = "Room 61!"/>
     </div>
   );
 }
