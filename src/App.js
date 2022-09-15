@@ -2,8 +2,11 @@ import { useState } from "react";
 import ClassCounter from "./Components/ClassCounter";
 import PostItem from "./Components/PostItem";
 import PostList from "./Components/PostList";
+import MyButton from "./Components/UI/Button/MyButton";
+import MyInput from "./Components/UI/Input/MyInput";
 //import Counter from "./Components/Counter";
-import "./styles/style.css"
+import "./styles/style.css";
+
 
 function App() {
 
@@ -13,17 +16,15 @@ function App() {
     {id: 3, title: 'Steam', body: 'Description'},
   ])
 
-  const [posts2, setPosts2] = useState([
-    {id: 1, title: 'Sanek', body: 'Description'},
-    {id: 2, title: 'Meshok', body: 'Description'},
-    {id: 3, title: 'Vitok', body: 'Description'},
-  ])
-
 
   return (
     <div className="App">
+      <form>
+        <MyInput text = "text" placeholder = "Название поста"></MyInput>
+        <MyInput text = "text" placeholder = "Название поста"></MyInput>
+        <MyButton disabled>Создать пост</MyButton>
+      </form>
       <PostList posts = {posts} title = "Список постов 1"/>
-      <PostList posts = {posts2} title = "Room 61!"/>
     </div>
   );
 }
