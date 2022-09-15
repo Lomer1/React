@@ -16,13 +16,35 @@ function App() {
     {id: 3, title: 'Steam', body: 'Description'},
   ])
 
+  const [post, setPost] = useState({title: '', body: '',})
 
+
+  const addNewPost = (e) => {
+
+    e.preventDefault();
+    setPosts([...posts, {...post, id: Date.now()}]);
+    setPost('');
+  }
+
+// исправить добавление постов (не появляется title, body  вновом посте)
   return (
     <div className="App">
       <form>
-        <MyInput text = "text" placeholder = "Название поста"></MyInput>
-        <MyInput text = "text" placeholder = "Название поста"></MyInput>
-        <MyButton disabled>Создать пост</MyButton>
+        <MyInput
+        value = {post.title} 
+        onChange = {e => setPost({...post, title: e.value})}
+        text = "text" 
+        placeholder = "Название поста">
+
+        </MyInput>
+        <MyInput
+        value = {post.body} 
+        onChange = {e => setPost({...post, body: e.value})}
+        text = "text" 
+        placeholder = "Описание">
+
+        </MyInput>
+        <MyButton onClick = {addNewPost}>Создать пост</MyButton>
       </form>
       <PostList posts = {posts} title = "Список постов 1"/>
     </div>
