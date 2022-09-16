@@ -13,7 +13,7 @@ function App() {
   const [posts, setPosts] = useState([
     {id: 1, title: 'JS', body: 'Description'},
     {id: 2, title: 'Huuuki', body: 'Description'},
-    {id: 3, title: 'Steam', body: 'Description'},
+    {id: 3, title: 'Steamm', body: 'Description'},
   ])
 
   const [post, setPost] = useState({title: '', body: '',})
