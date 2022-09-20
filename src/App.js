@@ -15,10 +15,21 @@ function App() {
   const [posts, setPosts] = useState([
     {id: 1, title: 'JS', body: 'Description'},
     {id: 2, title: 'Huuuki', body: 'AA'},
-    {id: 3, title: 'Steamm', body: 'SS'},
+    {id: 3, title: 'AA', body: 'SS'},
   ])
 
   const [selectedSort, setSelectedSort] = useState('')
+  const [searchQuery, setSearchQuery] = useState('')
+
+  function getSortedPosts() {
+    console.log('отработала ф-ия')
+    if(selectedSort) {
+      return [...posts].sort((a,b) => a[selectedSort].localeCompare(b[selectedSort]))
+    }
+    return posts;
+  }
+
+  const sortedPost = getSortedPosts();
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost])
@@ -30,7 +41,6 @@ function App() {
 
   const sortPosts = (sort) => {
     setSelectedSort(sort);
-    setPosts([...posts].sort((a,b) => a[sort].localeCompare(b[sort])));
   }
 
   return (
@@ -38,6 +48,11 @@ function App() {
       <PostForm create = {createPost}/>
       <hr style = {{margin: '15px'}}/>
       <div>
+        <MyInput
+          value = {searchQuery}
+          onChange = {e => setSearchQuery(e.target.value)}
+          placeholder = 'Поиск'        
+        />
         <MySelect 
         value = {selectedSort}
         onChange = {sortPosts}
@@ -50,7 +65,7 @@ function App() {
         />
       </div>
       {posts.length !== 0
-        ? <PostList remove = {removePost} posts = {posts} title = "Список постов 1"/>
+        ? <PostList remove = {removePost} posts = {sortedPost} title = "Список постов 1"/>
         : <h1 style = {{textAlign: 'center'}}>Посты не найдены</h1>
       }
     </div>
